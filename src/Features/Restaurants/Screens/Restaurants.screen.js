@@ -5,8 +5,8 @@ import { StatusBar, SafeAreaView } from 'react-native'
 import { RestaurantInfoCard } from '../Components/RestaurantInfoCard.component'
 
 const RestaurantList = styled.View`
-    padding: {(props) => props.theme.space[2]};
-    background-color:{(props) => props.theme.colors.bg.primary}; 
+    padding: ${(props) => props.theme.space[3]};
+    background-color:${(props) => props.theme.colors.bg.primary}; 
     flex: 1;
 `
 const StyledAreaView = styled(SafeAreaView)`
@@ -14,7 +14,7 @@ const StyledAreaView = styled(SafeAreaView)`
     marginTop: ${StatusBar.currentHeight}px
 `
 const StyledSearchBar = styled.View`
-    padding: {(props) => props.theme.space[2]};
+    padding: ${(props) => props.theme.space[3]};
 `
 
 export const RestaurantsScreen = () => {
