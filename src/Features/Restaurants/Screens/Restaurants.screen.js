@@ -16,6 +16,10 @@ const StyledAreaView = styled(SafeAreaView)`
 const StyledSearchBar = styled.View`
     padding: ${(props) => props.theme.space[3]};
 `
+const CustomSearchbar = styled(Searchbar)`
+    background-color: white;
+    border-radius: 10px;
+`
 
 export const RestaurantsScreen = () => {
     const [searchQuery, setSearchQuery] = useState('')
@@ -24,10 +28,11 @@ export const RestaurantsScreen = () => {
     return(
         <StyledAreaView>
             <StyledSearchBar>
-                <Searchbar
+                <CustomSearchbar
                     value={searchQuery}
                     onChangeText={handleChange}
                     placeholder='Search'
+                    elevation={2}
                 />
             </StyledSearchBar>
             <RestaurantList>

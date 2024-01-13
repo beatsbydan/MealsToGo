@@ -3,6 +3,7 @@ import styled  from "styled-components/native";
 import { Card } from "react-native-paper";
 import {SvgXml} from 'react-native-svg'
 import star from '../../../../assets/star'
+import open from '../../../../assets/open'
 
 const Title = styled.Text`
     font-family: ${(props) => props.theme.fonts.heading};
@@ -57,10 +58,10 @@ export const RestaurantInfoCard = ({restaurant = {}}) => {
                 <Availability>
                     <Rating>
                         {RatingArray.map((rating, index)=>{
-                            return <SvgXml xml={star} width={20} height={20}/>
+                            return <SvgXml key={index} xml={star} width={20} height={20}/>
                         })}
                     </Rating>
-                    {isOpenNow && <SvgXml xml={star} width={20} height={20}/>}
+                    {isOpenNow && <SvgXml xml={open} width={20} height={20}/>}
                 </Availability>
                 <Address>{address}</Address>
             </Info>
