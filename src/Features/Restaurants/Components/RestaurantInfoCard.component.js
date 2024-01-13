@@ -4,6 +4,7 @@ import { Card } from "react-native-paper";
 import {SvgXml} from 'react-native-svg'
 import star from '../../../../assets/star'
 import open from '../../../../assets/open'
+import {Image, Text} from 'react-native'
 
 const Title = styled.Text`
     font-family: ${(props) => props.theme.fonts.heading};
@@ -34,18 +35,22 @@ const Availability = styled.View`
     padding-top: ${(props) => props.theme.space[2]};
     padding-bottom: ${(props) => props.theme.space[2]}
 `
-
+const SectionEnd = styled.View`
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+`
 export const RestaurantInfoCard = ({restaurant = {}}) => {
     const {
         name = "Just 4 you",
-        icon,
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
         photos = [
             "https://media.istockphoto.com/id/1398630614/photo/bacon-cheeseburger-on-a-toasted-bun.jpg?s=612x612&w=0&k=20&c=3HWrUVnS-FsJETFlCWnDH2-1ekJ0ic3T3XPrhLjpo98="
         ],
         address = "Ikorodu, Lagos",
         isOpenNow = true,
         rating = 4,
-        isClosedTemporarily
+        isClosedTemporarily = true
     } = restaurant
 
     const RatingArray = Array.from(new Array(Math.floor(rating)))
@@ -61,7 +66,15 @@ export const RestaurantInfoCard = ({restaurant = {}}) => {
                             return <SvgXml key={index} xml={star} width={20} height={20}/>
                         })}
                     </Rating>
-                    {isOpenNow && <SvgXml xml={open} width={20} height={20}/>}
+                    <SectionEnd>
+                        {isClosedTemporarily &&
+                            <Text variant="label" style={{color: "red"}}>
+                                CLOSED TEMPORARILY
+                            </Text>
+                        }
+                        {isOpenNow && <SvgXml xml={open} width={20} height={20}/>}
+                        <Image style={{ width: 15, height: 15 }} source={{ uri: icon }}/>
+                    </SectionEnd>
                 </Availability>
                 <Address>{address}</Address>
             </Info>
