@@ -5,6 +5,7 @@ import {SvgXml} from 'react-native-svg'
 import star from '../../../../assets/star'
 import open from '../../../../assets/open'
 import {Image, Text} from 'react-native'
+import { Spacer } from "../../../Components/Spacer/Spacer.component";
 
 const Title = styled.Text`
     font-family: ${(props) => props.theme.fonts.heading};
@@ -37,9 +38,7 @@ const Availability = styled.View`
 `
 const SectionEnd = styled.View`
     flex-direction: row;
-    align-items: center;
-    gap: 12px;
-`
+    align-items: center;`
 export const RestaurantInfoCard = ({restaurant = {}}) => {
     const {
         name = "Just 4 you",
@@ -72,7 +71,9 @@ export const RestaurantInfoCard = ({restaurant = {}}) => {
                                 CLOSED TEMPORARILY
                             </Text>
                         }
+                        <Spacer variant={"left.large"}/>
                         {isOpenNow && <SvgXml xml={open} width={25} height={20}/>}
+                        <Spacer variant={"left.large"}/>
                         <Image style={{ width: 15, height: 15 }} source={{ uri: icon }}/>
                     </SectionEnd>
                 </Availability>
