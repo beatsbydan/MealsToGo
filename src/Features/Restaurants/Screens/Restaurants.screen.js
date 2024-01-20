@@ -1,25 +1,12 @@
-import React, {useState} from 'react'
-import styled from 'styled-components'
-import { Searchbar } from 'react-native-paper'
-import { FlatList } from 'react-native'
+import React, {useState, useContext} from 'react'
 import { RestaurantInfoCard } from '../Components/RestaurantInfoCard.component'
 import { Spacer } from '../../../Components/Spacer/Spacer.component'
 import {StyledAreaView} from '../../../Components/Utility/SafeArea.component'
-
-const StyledSearchBar = styled.View`
-    padding: ${(props) => props.theme.space[3]};
-`
-const CustomSearchbar = styled(Searchbar)`
-    background-color: white;
-    border-radius: 10px;
-`
-const RestaurantList = styled(FlatList).attrs({
-    contentContainerStyle:{
-        padding: 16
-    }
-})``
+import { RestaurantsContext } from '../../../Services/Restaurants/Restaurants.context'
+import {StyledSearchBar, CustomSearchbar, RestaurantList} from './Restaurants.styles'
 
 export const RestaurantsScreen = () => {
+    const {isLoading, error, restaurants} = useContext(RestaurantsContext)
     const [searchQuery, setSearchQuery] = useState('')
     const handleChange = (query) => setSearchQuery(query)
     
@@ -34,11 +21,14 @@ export const RestaurantsScreen = () => {
                 />
             </StyledSearchBar>
             <RestaurantList
-                data={[{name: 1}, {name: 2}, {name: 3}]}
-                renderItem={() => 
-                    <Spacer position="bottom" size="large">
-                        <RestaurantInfoCard/>
-                    </Spacer>
+                data={restaurants}
+                renderItem={(item) => {
+                        return (
+                            <Spacer position="bottom" size="large">
+                                <RestaurantInfoCard restaurant={item}/>
+                            </Spacer>
+                        )
+                    }
                 }
                 keyExtractor={(item) => item.name}
             />
