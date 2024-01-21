@@ -10,6 +10,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import {Text} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import { RestaurantsContextProvider } from './src/Services/Restaurants/Restaurants.context';
+import { LocationContextProvider } from './src/Services/Location/Location.context';
 
 const Settings = () => {
   return(
@@ -52,15 +53,17 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantsContextProvider>
-          <NavigationContainer>
-            <Tab.Navigator screenOptions={screenOptions}>
-              <Tab.Screen name="Restaurants" component={RestaurantsScreen}/>
-              <Tab.Screen name="Map" component={Map}/>
-              <Tab.Screen name="Settings" component={Settings}/>
-            </Tab.Navigator>
-          </NavigationContainer>
-        </RestaurantsContextProvider>
+        <LocationContextProvider>
+          <RestaurantsContextProvider>
+            <NavigationContainer>
+              <Tab.Navigator screenOptions={screenOptions}>
+                <Tab.Screen name="Restaurants" component={RestaurantsScreen}/>
+                <Tab.Screen name="Map" component={Map}/>
+                <Tab.Screen name="Settings" component={Settings}/>
+              </Tab.Navigator>
+            </NavigationContainer>
+          </RestaurantsContextProvider>
+        </LocationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style='auto'/>
     </>

@@ -17,15 +17,13 @@ import{
 
 export const RestaurantInfoCard = ({restaurant = {}}) => {
     const {
-        name = "Just 4 you",
-        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
-        photos = [
-            "https://media.istockphoto.com/id/1398630614/photo/bacon-cheeseburger-on-a-toasted-bun.jpg?s=612x612&w=0&k=20&c=3HWrUVnS-FsJETFlCWnDH2-1ekJ0ic3T3XPrhLjpo98="
-        ],
-        address = "Ikorodu, Lagos",
-        isOpenNow = true,
-        rating = 4,
-        isClosedTemporarily = true
+        name,
+        icon,
+        photos,
+        address,
+        isOpenNow,
+        rating,
+        isClosedTemporarily
     } = restaurant
 
     const RatingArray = Array.from(new Array(Math.floor(rating)))
