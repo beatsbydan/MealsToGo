@@ -5,7 +5,7 @@ import {StyledAreaView} from '../../../Components/Utility/SafeArea.component'
 import { RestaurantsContext } from '../../../Services/Restaurants/Restaurants.context'
 import {RestaurantList, LoadingBar} from './Restaurants.styles'
 import { MD2Colors } from 'react-native-paper';
-import { Search } from '../Components/Search.compnent'
+import { Search } from '../Components/Search.component'
 
 export const RestaurantsScreen = () => {
     const {isLoading, error, restaurants} = useContext(RestaurantsContext)
