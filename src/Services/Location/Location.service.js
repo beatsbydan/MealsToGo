@@ -4,7 +4,6 @@ import { locations } from "./Location.mock";
 export const LocationRequest = (searchTerm) => {
     return new Promise((resolve, reject) => {
         const mock = locations[searchTerm]
-        console.log(mock)
         if(!mock){
             reject("Not Found!")
         }
