@@ -16,6 +16,8 @@ const Map = () => {
     )
 }
 
+const Tab = createBottomTabNavigator();
+
 const TAB_ICON = {
     Restaurants: "restaurant",
     Map: "map",
@@ -31,9 +33,8 @@ const screenOptions = ({route}) => {
     }
 }
 
-export const AppNavigator = () => {
-    const Tab = createBottomTabNavigator();
 
+export const AppNavigator = () => {
     return(
         <NavigationContainer>
             <Tab.Navigator screenOptions={screenOptions}>
