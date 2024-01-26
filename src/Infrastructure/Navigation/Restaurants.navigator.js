@@ -1,5 +1,5 @@
 import React from "react";
-import {createNativeStackNavigator} from '@react-navigation/native-stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { RestaurantsScreen } from "../../Features/Restaurants/Screens/Restaurants.screen";
 
 const RestaurantStack = createNativeStackNavigator()
