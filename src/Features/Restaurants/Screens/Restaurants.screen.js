@@ -5,9 +5,10 @@ import {StyledAreaView} from '../../../Components/Utility/SafeArea.component'
 import { RestaurantsContext } from '../../../Services/Restaurants/Restaurants.context'
 import {RestaurantList, LoadingBar} from './Restaurants.styles'
 import { MD2Colors } from 'react-native-paper';
+import { Pressable, TouchableOpacity } from 'react-native'
 import { Search } from '../Components/Search.component'
 
-export const RestaurantsScreen = () => {
+export const RestaurantsScreen = ({navigation}) => {
     const {isLoading, error, restaurants} = useContext(RestaurantsContext)
     
     return(
@@ -21,9 +22,13 @@ export const RestaurantsScreen = () => {
                     data={restaurants}
                     renderItem={({item}) => {
                             return (
-                                <Spacer position="bottom" size="large">
-                                    <RestaurantInfoCard restaurant={item}/>
-                                </Spacer>
+                                <TouchableOpacity 
+                                    onPress={()=>navigation.navigate('RestaurantDetail', {restaurant: item})}>
+                                    <Spacer position="bottom" size="large">
+                                        <RestaurantInfoCard restaurant={item}/>
+                                    </Spacer>
+                                </TouchableOpacity>
+                                
                             )
                         }
                     }
