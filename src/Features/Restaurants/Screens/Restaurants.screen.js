@@ -5,7 +5,7 @@ import {StyledAreaView} from '../../../Components/Utility/SafeArea.component'
 import { RestaurantsContext } from '../../../Services/Restaurants/Restaurants.context'
 import {RestaurantList, LoadingBar} from './Restaurants.styles'
 import { MD2Colors } from 'react-native-paper';
-import { Pressable, TouchableOpacity } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import { Search } from '../Components/Search.component'
 
 export const RestaurantsScreen = ({navigation}) => {
